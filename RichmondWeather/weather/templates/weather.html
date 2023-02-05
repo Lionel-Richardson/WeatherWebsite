@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}
+Richmond Weather
+{% endblock %}
+{% block content %}
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-dark" style="color:white">
+<div class="row" style="margin-top:20px; margin-left:20px">
+   <div class="col-3">
+      <h2>Weather Channel</h2>
+      <h1>{{ weatherchanneltemp }}F</h1>
+      <br>
+   </div>
+   <div class="col-3">
+      <h2>Wunderground</h2>
+      <h1>{{ wundergroundtemp }}°F</h1>
+      <br>
+   </div>
+   <div class="col-3">
+      <h2>NOAA</h2>
+      <h1>{{ noaatemp }}</h1>
+      <br>
+   </div>
+   <div class="col-3">
+      <h2>Local Conditions</h2>
+      <h1>{{ localconditionstemp }}°F</h1>
+      <br>
+   </div>
+</div>
+<br>
+<div class="row" style="margin-top:20px; text-align:center">
+   <div class="col-12">
+      <h2>Average Weather</h2>
+      <h1>{{ averagetemp }}°F</h1>
+   </div>
+</div>
+{% endblock %}
