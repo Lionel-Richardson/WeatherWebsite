@@ -1,5 +1,6 @@
 from weather import db
 
+#SQL database model
 class Weather(db.Model):
     __tablename__ = 'weather_site_temps'
     dataID = db.Column(db.Integer(), primary_key=True)
