@@ -8,5 +8,3 @@ class Weather(db.Model):
     temperature = db.Column(db.VARCHAR(length=50), nullable=True)
     conditions = db.Column(db.VARCHAR(length=50), nullable=True)
     time = db.Column(db.DATETIME(), nullable=True)
-
-
