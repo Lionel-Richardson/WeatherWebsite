@@ -54,7 +54,7 @@ def get_weather():
 
 #NOAA
     html_text = requests.get(
-        "https://forecast.weather.gov/MapClick.php?CityName=Midlothian&state=VA&site=AKQ&textField1=37.5025&textField2=-77.6398&e=0").text
+        "https://forecast.weather.gov/MapClick.php?lat=37.510088600000074&lon=-77.61887949999993").text
     soup = BeautifulSoup(html_text, "lxml")
     temperature_noaa = soup.find("p", class_="myforecast-current-lrg").text
     conditions_noaa = soup.find("p", class_="myforecast-current").text
