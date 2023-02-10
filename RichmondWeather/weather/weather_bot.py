@@ -99,10 +99,9 @@ def get_weather():
     db.commit()
     print(f"Average: {average}")
 
-
 if __name__ == "__main__":
     while True:
         get_weather()
-        time_wait = 1800
+        time_wait = 10
         time.sleep(time_wait)
 
