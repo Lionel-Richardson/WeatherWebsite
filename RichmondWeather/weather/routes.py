@@ -16,7 +16,7 @@ def home_page():
 @app.route('/weather')
 @login_required #requires login to view page, can be deleted.
 def weather_page():
-    get_weather()
+    get_weather() #causes webscraper to run when page is refreshed
 
 #retrieve weather channel temp and conditions from database
     for weather_channel_temp in Weather.query.filter_by(source='Weather Channel').all():
