@@ -37,7 +37,7 @@ def get_weather():
 
 #Wunderground
     html_text = requests.get(
-        "https://www.wunderground.com/weather/us/va/midlothian/KVAMIDLO74").text
+        "https://www.wunderground.com/weather/us/va/midlothian").text
     soup = BeautifulSoup(html_text, "lxml")
     temperature_wunderground = soup.find("span", class_="wu-value wu-value-to").text
     conditions_wunderground = soup.find("div", class_="condition-icon small-6 medium-12 columns").text
