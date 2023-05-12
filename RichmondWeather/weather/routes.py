@@ -108,22 +108,29 @@ def logout_page():
     return redirect(url_for("home_page"))
 
 #test page for trying out new things
+#currently an api for temperatures
 @app.route('/test')
 def test_page():
-    form = RegisterForm()
-    if form.validate_on_submit():
-        user_to_create = User(username=form.username.data,
-                              email_address=form.email_address.data,
-                              password=form.password1.data)
-        db.session.add(user_to_create)
-        db.session.commit()
-        login_user(user_to_create)
-        flash(f"Account created successfully! You are now logged in as {user_to_create.username}", category='success')
-        return redirect(url_for('weather_page'))
-    if form.errors != {}:
-        for err_msg in form.errors.values():
-            flash(f'There was an error with creating a user: {err_msg}', category='danger')
 
-    return render_template('test.html', form=form)
+    for weather_channel_temp in Weather.query.filter_by(source='Weather Channel').all():
+        weather_channel_temp = weather_channel_temp
+
+    for wunderground_temp in Weather.query.filter_by(source='Wunderground').all():
+        wunderground_temp = wunderground_temp
+
+    for noaa_temp in Weather.query.filter_by(source='NOAA').all():
+        noaa_temp = noaa_temp
+
+    for local_conditions_temp in Weather.query.filter_by(source='Local Conditions').all():
+        local_conditions_temp = local_conditions_temp
+
+    temp1 = weather_channel_temp.temperature
+    temp2 = wunderground_temp.temperature
+    temp3 = noaa_temp.temperature
+    temp4 = local_conditions_temp.temperature
+    return {"Weather Channel": temp1,
+            "Wunderground": temp2,
+            "NOAA": temp3,
+            "Local Conditions": temp4}
 
 
