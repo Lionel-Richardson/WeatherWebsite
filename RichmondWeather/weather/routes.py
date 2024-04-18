@@ -1,6 +1,6 @@
 from weather import app
-from flask import render_template, redirect, url_for, flash, request
-from weather.models import Weather, User
+from flask import render_template, redirect, url_for, flash, request, jsonify
+from weather.models import Weather, User, APIpoint
 from weather.forms import RegisterForm, LoginForm
 from weather import db
 from flask_login import login_user, logout_user, login_required
@@ -111,26 +111,6 @@ def logout_page():
 #currently an api for temperatures
 @app.route('/test')
 def test_page():
-
-    for weather_channel_temp in Weather.query.filter_by(source='Weather Channel').all():
-        weather_channel_temp = weather_channel_temp
-
-    for wunderground_temp in Weather.query.filter_by(source='Wunderground').all():
-        wunderground_temp = wunderground_temp
-
-    for noaa_temp in Weather.query.filter_by(source='NOAA').all():
-        noaa_temp = noaa_temp
-
-    for local_conditions_temp in Weather.query.filter_by(source='Local Conditions').all():
-        local_conditions_temp = local_conditions_temp
-
-    temp1 = weather_channel_temp.temperature
-    temp2 = wunderground_temp.temperature
-    temp3 = noaa_temp.temperature
-    temp4 = local_conditions_temp.temperature
-    return {"Weather Channel": temp1,
-            "Wunderground": temp2,
-            "NOAA": temp3,
-            "Local Conditions": temp4}
+    return jsonify(APIpoint.data)
 
 

@@ -35,3 +35,11 @@ class Weather(db.Model):
     temperature = db.Column(db.VARCHAR(length=50), nullable=True)
     conditions = db.Column(db.VARCHAR(length=50), nullable=True)
     time = db.Column(db.DATETIME(), nullable=True)
+
+class APIpoint(db.Model):
+    __tablename__ = 'weather_site_temps'
+    data = {"id": Weather.dataID,
+         "Source": Weather.source,
+         "temperature": Weather.temperature,
+         "conditions": Weather.conditions,
+         "time": Weather.time}
